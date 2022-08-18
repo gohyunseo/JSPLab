@@ -44,8 +44,6 @@
 		}
 	}
 	
-	DAOboard.boardinsert(title,content,iname);
-	
-	response.sendRedirect("boardpage_list.jsp");
+	DAOfile.boardinsert(title,content,iname);
 %>
 

@@ -20,8 +20,4 @@
 		response.sendRedirect("join.jsp");
 	}
 	
-	// 로그인시 세가지 경우의 수
-	// 1.로그인 성공 (ID/PASSWORD) 일치
-	// 2.로그인 실패 (ID 일치/PASSWORD 불일치) > 다시로그인 시도
-	// 3.로그인 실패 (ID가 없는 경우) > 회원가입
 %>

@@ -1,6 +1,7 @@
 package db;
 
-public class DTOboard {
+public class DTOfile {
+
 	private String bid;
 	private String title;
 	private String content;
@@ -36,7 +37,7 @@ public class DTOboard {
 	public void setBdate(String bdate) {
 		this.bdate = bdate;
 	}
-	public DTOboard(String bid, String title, String content, String iname, String bdate) {
+	public DTOfile(String bid, String title, String content, String iname, String bdate) {
 		super();
 		this.bid = bid;
 		this.title = title;
@@ -44,5 +45,5 @@ public class DTOboard {
 		this.iname = iname;
 		this.bdate = bdate;
 	}
-	
+
 }
