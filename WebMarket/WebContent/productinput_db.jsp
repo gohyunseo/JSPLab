@@ -10,7 +10,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="header.jsp" %>
 
 <% 
    String pid = null;
@@ -70,7 +70,7 @@
    
    DAOproduct.productinsert(pid,pname,pdesc,pprice,iname1,iname2,iname3);
    
-   response.sendRedirect("product_list.jsp");
+   response.sendRedirect("productlist.jsp");
 %>
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="footer.jsp" %>
