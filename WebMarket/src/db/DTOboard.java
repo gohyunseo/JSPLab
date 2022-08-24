@@ -1,11 +1,13 @@
 package db;
 
 public class DTOboard {
+
 	private String bid;
 	private String title;
 	private String content;
-	private String iname;
+	private String author;
 	private String bdate;
+	
 	public String getBid() {
 		return bid;
 	}
@@ -24,11 +26,11 @@ public class DTOboard {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getIname() {
-		return iname;
+	public String getAuthor() {
+		return author;
 	}
-	public void setIname(String iname) {
-		this.iname = iname;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	public String getBdate() {
 		return bdate;
@@ -36,13 +38,14 @@ public class DTOboard {
 	public void setBdate(String bdate) {
 		this.bdate = bdate;
 	}
-	public DTOboard(String bid, String title, String content, String iname, String bdate) {
+	
+	public DTOboard(String bid, String title, String content, String author, String bdate) {
 		super();
 		this.bid = bid;
 		this.title = title;
 		this.content = content;
-		this.iname = iname;
+		this.author = author;
 		this.bdate = bdate;
 	}
-	
+
 }

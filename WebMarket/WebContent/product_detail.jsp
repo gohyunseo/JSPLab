@@ -55,7 +55,8 @@
 	<br>
 	<div class= "container">
 <div class="col-sm-offset-2 col-sm-10 display-3">
-<a class="btn btn-primary" href="productlist.jsp" role="button">목록</a>
+<a class="btn btn-primary" href=delivery_page.jsp?pid=<%=product.getPid() %>&pname=<%=product.getPname() %>&pprice=<%=product.getPprice() %>" role="button">제품구매</a>
+<a class="btn btn-secondary" href="productlist.jsp" role="button">제품목록</a>
 </div>
 </div>
 <%@ include file="footer.jsp" %>

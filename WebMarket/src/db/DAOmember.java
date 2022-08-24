@@ -57,7 +57,87 @@ public class DAOmember {
 			return 1; //
 		} return 2; //
 	}
+	public static int memberout(String mname, String mpass) throws NamingException, SQLException  {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		int result = 0;
+		
+		String sql = "DELETE FROM member WHERE (mname=?) and (mpass=?) ";
+		//Connection Pool 이용
+		conn= ConnectionPool.get();
+		
+		stmt = conn.prepareStatement(sql);
+			stmt.setString(1, mname);
+			stmt.setString(2, mpass);			
+			
+		result = stmt.executeUpdate();
+		// 결과가 성공1 과 실패 0으로 넘어 온다. 
+		
+		return result;
+		
+	}
+	
+ public static DTOmember memberdetail(String mname) throws NamingException, SQLException {
+         
+         Connection conn = null;
+         PreparedStatement stmt = null;
+         ResultSet rs = null;
+         
+         String sql ="SELECT * FROM member WHERE mname=?";
+         
+         conn = ConnectionPool.get();
+         stmt = conn.prepareStatement(sql);
+            stmt.setNString(1,mname);
+         rs = stmt.executeQuery();
+         
+         rs.next();
+         
+         String mno = rs.getString(1);
+          mname = rs.getString(2);
+         String mpass = rs.getString(3);
+         String mtel = rs.getString(4);
+         String memail = rs.getString(5);
+         String mgender = rs.getString(6);
+         String maddr = rs.getString(7);
+         String mlevel = rs.getString(8);
+         String miname = rs.getString(9);
+         String mdate = rs.getString(10);
+         
+         DTOmember member = new DTOmember(mno,mname,mpass,mtel, memail, mgender,maddr, mlevel,miname,mdate);
+         return member;
+      }
+
+ public static ArrayList<DTOmember> memberList() throws NamingException,SQLException{
+ 
+	 	Connection conn = null;
+	 	PreparedStatement stmt = null;
+	 	ResultSet rs = null;
+ 
+	 	String sql="SELECT * FROM member";
+ 
+	 	conn = ConnectionPool.get();
+	 	stmt = conn.prepareStatement(sql);
+	 	rs = stmt.executeQuery();
+ 
+	 	ArrayList<DTOmember> members = new ArrayList<DTOmember>() ;
+ 
+ while(rs.next()) { members.add(new DTOmember(rs.getString(1),
+		 									rs.getString(2),
+		 									rs.getString(3), 
+		 									rs.getString(4), 
+		 									rs.getString(5),
+		 									rs.getString(6), 
+		 									rs.getString(7), 
+		 									rs.getString(8), 
+		 									rs.getString(9),
+		 									rs.getString(10))); 
+ 		}
+ return members;
+ }
+
 }
+	
+
 	
 //	public static int memberinsert(String mname, String mtel, String miname) throws NamingException, SQLException {
 //		
@@ -82,54 +162,5 @@ public class DAOmember {
 //			conn.close();
 //		}
 //	}
-//	public static ArrayList<DTOmember> memberList() throws NamingException, SQLException{
-//		Connection conn = null;
-//		PreparedStatement stmt = null;
-//		ResultSet rs = null;
-//		
-//		String sql = "SELECT * FROM member";
-//		
-//		conn = ConnectionPool.get();
-//		stmt = conn.prepareStatement(sql);
-//		rs = stmt.executeQuery();
-//		
-//		ArrayList<DTOmember> members = new ArrayList<DTOmember>();
-//		
-//		while(rs.next()) {
-//			members.add(new DTOmember(rs.getString(1),
-//										rs.getString(2),
-//										rs.getString(3),
-//										rs.getString(4),
-//										rs.getString(5),
-//										rs.getString(6)));
-//		}
-//		return members;
-//	}
-//	
-//	public static DTOmember memberDetail(String mno) throws NamingException, SQLException {
-//		Connection conn = null;
-//		PreparedStatement stmt = null;
-//		ResultSet rs = null;
-//		
-//		String sql = "SELECT * FROM member WHERE mno=? ";
-//		conn= ConnectionPool.get();
-//		stmt = conn.prepareStatement(sql);
-//			stmt.setString(1, mno);	
-//		rs = stmt.executeQuery();
-//		
-//		rs.next();
-//		
-//		mno = rs.getString(1);
-//		String mname = rs.getString(2);
-//		String mtel = rs.getString(3);
-//		String mlevel = rs.getString(4);
-//		String miname = rs.getString(5);
-//		String mdate = rs.getString(6);
-//		
-//
-//		
-//		DTOmember member = new DTOmember(mno,mname,mtel,mlevel,miname,mdate);
-//		
-//		return member;
-//	}
-//}
+
+	

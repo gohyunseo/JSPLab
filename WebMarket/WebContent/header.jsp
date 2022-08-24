@@ -48,9 +48,9 @@
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="login.jsp">로그인</a></li>
           <li><a class="dropdown-item" href="logout.jsp">로그아웃</a></li>
-          <li><a class="dropdown-item" href="#">------</a></li>
+          <li><a class="dropdown-item" href="memberdetail.jsp">회원정보</a></li>
           <li><a class="dropdown-item" href="member_input_page.jsp">회원가입</a></li>
-          <li><a class="dropdown-item" href="member_delete.jsp">회원탈퇴</a></li>
+          <li><a class="dropdown-item" href="memberout_page.jsp">회원탈퇴</a></li>
         </ul>
       </li>
     </ul>
