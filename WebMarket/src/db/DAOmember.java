@@ -57,6 +57,28 @@ public class DAOmember {
 			return 1; //
 		} return 2; //
 	}
+	public static int kakaologin(String mname) throws NamingException, SQLException {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		
+		String sql = "SELECT mname, memail FROM member WHERE mname=?";
+		
+		conn= ConnectionPool.get();
+		
+		stmt = conn.prepareStatement(sql);
+			stmt.setString(1, mname);
+			
+		rs = stmt.executeQuery();
+		if(!rs.next()){
+			return 3; //아이디 비번 모두 없는 비회원
+		}
+		if(mname.equals(rs.getString("mname"))) {
+			return 1; //문제없는 회원
+		} return 2; //pw가 틀린회원 
+	}
 	public static int memberout(String mname, String mpass) throws NamingException, SQLException  {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -67,8 +89,7 @@ public class DAOmember {
 		conn= ConnectionPool.get();
 		
 		stmt = conn.prepareStatement(sql);
-			stmt.setString(1, mname);
-			stmt.setString(2, mpass);			
+			stmt.setString(1, mname);			
 			
 		result = stmt.executeUpdate();
 		// 결과가 성공1 과 실패 0으로 넘어 온다. 

@@ -29,7 +29,8 @@
           <li><a class="dropdown-item" href="members.jsp">회원관리</a></li>
           <li><a class="dropdown-item" href="products.jsp">제품관리</a></li>
           <li><a class="dropdown-item" href="board.jsp">게시판관리</a></li>
-          <li><a class="dropdown-item" href="">기타</a></li>
+          <li><a class="dropdown-item" href="selling.jsp">배송관리</a></li>
+          <li><a class="dropdown-item" href="mail.jsp">메일발송</a></li>
         </ul>
       </li>
       

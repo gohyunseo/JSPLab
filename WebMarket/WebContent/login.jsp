@@ -11,6 +11,7 @@
 						
 </head>																																																																																		
 <body>
+
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <%@ include file="header.jsp" %>
@@ -49,7 +50,42 @@
         </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
     <br>
-    <img src = "http://papaspick.com/web/upload/2019_web/icon/kakao_login.jpg" height= "55px" width= "305px">
+    <a id="custom-login-btn" href="javascript:kakaoLogin()">
+  <img
+    src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+    width="222"
+    alt="카카오 로그인 버튼"
+  />
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+<script>
+// script
+// 발급 받은 키
+      Kakao.init("d57fba681721889d0b64bbbecc3e874d");
+
+      function kakaoLogin() {
+        window.Kakao.Auth.login({
+          // 카카오 개발자 사이트의 동의항목에서 설정한 ID와 반드시 일치해야함
+          scope: 'profile_nickname, account_email,gender',
+          success: function (authObj) {
+                console.log(authObj);
+                window.Kakao.API.request({
+                url:'/v2/user/me',
+                success: res => {
+                    const kakaoAccount = res.kakao_account;
+					location.href='kakaocheck.jsp?mname=' + kakaoAccount.profile.nickname
+							+ '&memail=' + kakaoAccount.email
+							+ '&mgender=' + kakaoAccount.gender
+;
+					
+                }
+                });
+
+
+          }
+        });
+      }
+      </script>
     <p class="mt-1 mb-3 text-muted">&copy; hyunseo ko</p>
   </form>
 </main>
